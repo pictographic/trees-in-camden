@@ -35,13 +35,15 @@ function parseCSV(fileContents, cb) {
     })
     .data;
 
-  trees = data.map((itm) => {
+  trees = data.filter(itm=>itm['Latitude']).map((itm) => {
     let speciesHash;
 
 
     if (!itm['Scientific Name']) {
       return {};
     }
+
+
     speciesHash = hashID(itm['Scientific Name']);
     species[speciesHash] = {
       scientific: itm['Scientific Name'],
@@ -56,13 +58,13 @@ function parseCSV(fileContents, cb) {
       type: "Feature",
       geometry: {
         type:"Point",
-        coordinates: [itm['Longitude'], itm['Latitude']]
+        coordinates: [Number(itm['Longitude']), Number(itm['Latitude'])]
       },
       properties: {
         species: speciesHash,
         ward: itm['Ward Code'],
-        h: itm['Height In Metres'],
-        w: itm['Spread In Metres']
+        h: Number(itm['Height In Metres']),
+        w: Number(itm['Spread In Metres'])
       }
     }
   });
@@ -77,8 +79,8 @@ function parseCSV(fileContents, cb) {
     species
   }
 
-  fs.writeFile(destfile, JSON.stringify(geoJSON), function(err){
-    fs.writeFile(refFile, JSON.stringify(refData), cb);
+  fs.writeFile(destfile, JSON.stringify(geoJSON, null, 1), function(err){
+    fs.writeFile(refFile, JSON.stringify(refData, null, 1), cb);
   });
 }
 

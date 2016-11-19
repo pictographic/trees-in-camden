@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
   <link rel="stylesheet" href="./css/main.css" />
 </head>
 <body>
 
-  <div id="map-container">
+  <div id="viz-container">
 
   </div>
 
 <script src="./js/vendor.js" charset="utf-8"></script>
 <script src="./js/TreesInCamden.js" charset="utf-8"></script>
+<script type="text/javascript">
+  TreesInCamden('viz-container');
+</script>
 </body>
 </html>

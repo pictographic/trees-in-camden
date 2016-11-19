@@ -7,10 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "vendor-js": "mkdirp ./public/js/ && browserify  -r d3 -r leaflet  | uglifyjs > ./public/js/vendor.js",
     "browserify-js": "mkdirp ./public/js/ && browserify --debug -t [babelify --presets [ es2015 ] ] -t brfs  -x d3 -x leaflet -x lodash  ./src/js/index.js --standalone TreesInCamden  > ./public/js/TreesInCamden.js",
+    "uglify": "uglifyjs ./public/js/TreesInCamden.js -o ./public/js/TreesInCamden.min.js",
     "process-sass": "mkdirp ./public/css/ && node-sass ./src/sass/main.scss ./public/css/main.css",
     "copy-static": "ncp  ./src/static ./public/static",
     "process-html": "ncp ./src/html ./public",
-    "build": "npm run process-html & npm run browserify-js ",
+    "process-js": "npm run browserify-js && npm run uglify",
+    "build": "npm run process-html & npm run process-js",
     "watch-js": "fsmonitor -d './src' -s '+*.js' '+*.html' '!*/public/*' npm run build",
     "watch-static": "fsmonitor -d './src/static' -s npm run copy-static",
     "watch-sass": "fsmonitor -d './src/sass' -s '+*.scss'  npm run process-sass",
@@ -37,6 +39,7 @@
   "dependencies": {
     "d3": "^4.3.0",
     "leaflet": "^1.0.1",
-    "lodash": "^4.16.6"
+    "lodash": "^4.16.6",
+    "mapbox-gl": "^0.28.0"
   }
 }
