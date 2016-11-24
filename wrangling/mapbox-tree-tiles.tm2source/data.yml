@@ -1,0 +1,30 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: admataz.8bc7c634
+  rev: s-35be7bd3
+  saveCenter: true
+attribution: ''
+center: 
+  - -0.1601
+  - 51.5425
+  - 13
+description: ''
+Layer: 
+  - id: camden-trees
+    Datasource: 
+      file: /Users/adam/Documents/dev/code/viz/trees-in-camden/dev/wrangling/output/camden-trees.geojson
+      layer: camden-trees
+      type: geojson
+    description: ''
+    fields: 
+      h: Number
+      species: String
+      w: Number
+      ward: String
+    properties: 
+      "buffer-size": 12
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 16
+minzoom: 0
+name: Trees of Camden

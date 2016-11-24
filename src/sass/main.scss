@@ -9,9 +9,36 @@ html {
 body {
     font-family: Helvetica, Arial, sans-serif;
     background-color: #fff;
+    color: #666;
+}
+
+
+#viz-header{
+    padding: 8px;
+    border-bottom: 3px solid #000;
+    h1{
+        font-size: 14px;
+        margin:0;
+        padding:0;
+    }
+    p{
+        margin:0;
+        padding:0;
+        font-size: 14px;
+    }
+    a{
+        color: #000;
+        text-decoration: none;
+    }
+    img.logo{
+        width: 30px;
+        float: left;
+        margin-right: 10px;
+    }
 }
 
 #viz-container {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 20px);
+
 }

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "vendor-js": "mkdirp ./public/js/ && browserify  -r d3 -r leaflet  | uglifyjs > ./public/js/vendor.js",
-    "browserify-js": "mkdirp ./public/js/ && browserify --debug -t [babelify --presets [ es2015 ] ] -t brfs  -x d3 -x leaflet -x lodash  ./src/js/index.js --standalone TreesInCamden  > ./public/js/TreesInCamden.js",
+    "vendor-js": "mkdirp ./public/js/ && browserify  -r mapbox-gl  | uglifyjs > ./public/js/vendor.js",
+    "browserify-js": "mkdirp ./public/js/ && browserify --debug -t [babelify --presets [ es2015 ] ] -t brfs  -x mapbox-gl  ./src/js/index.js --standalone TreesInCamden  > ./public/js/TreesInCamden.js",
     "uglify": "uglifyjs ./public/js/TreesInCamden.js -o ./public/js/TreesInCamden.min.js",
     "process-sass": "mkdirp ./public/css/ && node-sass ./src/sass/main.scss ./public/css/main.css",
     "copy-static": "ncp  ./src/static ./public/static",
